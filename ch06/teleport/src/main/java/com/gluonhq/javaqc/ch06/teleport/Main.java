@@ -10,9 +10,7 @@ public class Main {
     public static void main(String[] args) {
         QuantumExecutionEnvironment simulator = new SimpleQuantumExecutionEnvironment();
         Program program = new Program(3);
-        // Step step0 = new Step();
-        // step0.addGate(new X(0));
-        // program.addStep(step0);
+        program.initializeQubit(0, Math.sqrt(0.5));
         Step step1 = new Step();
         step1.addGate(new Hadamard(1));
         Step step2 = new Step();
@@ -46,7 +44,7 @@ public class Main {
         int v2 = q2.measure();
         System.err.println("v = "+v2);
         Renderer.renderProgram(program);
-        Renderer.showProbabilities(program, 1000);
+        Renderer.showProbabilities(program, 10000);
     }  
 
 }

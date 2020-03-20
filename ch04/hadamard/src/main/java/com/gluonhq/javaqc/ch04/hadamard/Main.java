@@ -16,16 +16,19 @@ public class Main {
         System.out.println("\n\n");
         System.out.println("==================================================");
         System.out.println("1000 runs of a Quantum Circuit with Hadamard Gate");
-        manyExecution();
+        //manyExecution();
         System.out.println("==================================================");
     }
 
     public static void singleExecution() {
         QuantumExecutionEnvironment simulator = new SimpleQuantumExecutionEnvironment();
         Program program = new Program(1);
-        Step step = new Step();
-        step.addGate(new Hadamard(0));
-        program.addStep(step);
+        Step step1 = new Step();
+        step1.addGate(new X(0));
+        Step step2 = new Step();
+        step2.addGate(new Hadamard(0));
+        program.addStep(step1);
+        program.addStep(step2);
         Result result = simulator.runProgram(program);
         Qubit[] qubits = result.getQubits();
         Qubit zero = qubits[0];
